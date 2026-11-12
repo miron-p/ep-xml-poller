@@ -1,6 +1,15 @@
 name: Cloud validation and live EP probe
 on:
   workflow_dispatch:
+  push:
+    branches: [codex/xml-poller]
+    paths:
+      - '.github/workflows/cloud-test.yml'
+      - 'poller.py'
+      - 'cloud_probe.py'
+      - 'Dockerfile'
+      - 'compose*.yaml'
+      - 'tests/**'
 
 permissions:
   contents: read
