@@ -23,7 +23,8 @@ The Docker edition remains available for a server with persistent storage.
 It uses Python 3.12 and the standard library only. No application packages are
 needed. The free hosted edition preserves its state as JSON and exact XML files
 on the separate `archive` branch, restoring a temporary SQLite database for each
-run. It uses no Actions artifacts, paid runners, external databases or credentials.
+run. It uses no Actions artifacts, paid runners, external databases or
+user-managed API keys. GitHub supplies a repository-scoped token to each job.
 
 Standard runners in public repositories and public GitHub Pages are available
 free under the applicable limits:

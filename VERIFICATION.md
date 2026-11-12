@@ -56,8 +56,9 @@ attempts failed DNS; those were superseded by the direct network tests above.
 
 ## Still to verify on the deployment host
 
-- Docker image build, Compose resolution, startup, volume permissions and restart
-  behavior. Docker is not installed on this laptop.
+- A full Docker Compose service restart and named-volume persistence on a
+  long-running VM. The later cloud test verified the image build, Compose
+  resolution and unprivileged data-directory writes, as detailed below.
 - Successful live discovery and a real XML download from that host's network.
 - Parsing and comparison against real public WordML files. WordML test payloads
   in this release are synthetic; the real saved-page fixture validates discovery
@@ -86,7 +87,7 @@ https://github.com/miron-p/ep-xml-poller/actions/runs/43296555134.
 - No successful live XML download or real WordML parsing is claimed.
 
 The hosted adapter adds four persistence/publication tests: all **33 tests passed
-locally**. They cover complete snapshot restore with revision history and
+locally and on the Linux cloud runner**. They cover complete snapshot restore with revision history and
 validators, exact-byte public downloads, failed-source status visibility,
 corruption rejection and empty bootstrap status. The adapter stores versioned
 public JSON/XML files instead of committing a changing binary SQLite database.
@@ -95,3 +96,23 @@ The scheduled deployment uses free standard public-repository runners and a
 GitHub Pages public status/download page. Its ten-minute schedule is best-effort;
 it has no permanently running API server. Public Pages snapshots show their
 collection times and errors. Network access remains unverified on other hosts.
+
+Live deployment verification:
+
+- Public page: https://miron-p.github.io/ep-xml-poller/ — HTTP 200.
+- Public `api/status.json` and `api/lists.json` — HTTP 200.
+- First hosted collection, save and Pages publication completed successfully:
+  https://github.com/miron-p/ep-xml-poller/actions/runs/43297976425.
+- Second hosted collection restored the previous public state, appended its
+  result and published again:
+  https://github.com/miron-p/ep-xml-poller/actions/runs/43298270802.
+- The archive retained both run records across independent runners.
+- The schedule workflow is active. Its actual cron expression is
+  `3,13,23,33,43,53 * * * *`; exact dispatch times are controlled by GitHub.
+- Public status remains `ready: false`, `with_xml: 0`. The site visibly reports
+  the failed EP access or its retry backoff, including the original HTTP 403.
+- Successful scheduled workflow completion means that the check result was
+  persisted and published; it does not imply that EP supplied a document.
+
+Machine-readable evidence is in `docs/deployment-2026-11-12.json` and
+`docs/cloud-validation-2026-11-12.json`. No paid service was provisioned.

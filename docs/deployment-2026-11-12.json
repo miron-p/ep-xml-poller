@@ -1,0 +1,16 @@
+{
+  "verified_at": "2026-11-12T20:14:24.476529+00:00",
+  "public_url": "https://miron-p.github.io/ep-xml-poller/",
+  "public_status_http": 200,
+  "source_ready": false,
+  "xml_files_retrieved": 0,
+  "persisted_cloud_runs": 2,
+  "workflow": "https://github.com/miron-p/ep-xml-poller/actions/workflows/poll.yml",
+  "first_collection_run": "https://github.com/miron-p/ep-xml-poller/actions/runs/43297976425",
+  "second_collection_run": "https://github.com/miron-p/ep-xml-poller/actions/runs/43298270802",
+  "schedule": "3,13,23,33,43,53 * * * *",
+  "schedule_is_best_effort": true,
+  "latest_error": [
+    "Catalogue in retry backoff after: Catalogue HTTP 403"
+  ]
+}
