@@ -1,0 +1,27 @@
+services:
+  poller:
+    build: .
+    restart: unless-stopped
+    stop_grace_period: 40s
+    environment:
+      POLL_SECONDS: ${POLL_SECONDS:-300}
+      TRACK_DAYS: ${TRACK_DAYS:-30}
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ep-xml-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  ep-xml-data:

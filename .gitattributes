@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Preserve the public source fixture exactly, including its original whitespace.
+/tests/fixtures/listing-november.html -text -whitespace
