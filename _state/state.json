@@ -1,8 +1,23 @@
 {
   "documents": [],
   "objects": [],
-  "runs": [],
+  "runs": [
+    {
+      "id": 1,
+      "started": 1794514364.756735,
+      "summary": "{\"checked\":0,\"discovered\":0,\"discovery_ok\":false,\"errors\":[\"Discovery failed: Catalogue HTTP 403\"],\"finished_at\":\"2026-11-12T20:12:44.867207+00:00\",\"initial\":0,\"ok\":false,\"other_xml\":0,\"outstanding_errors\":0,\"pending_xml\":0,\"started\":1794514364.756735,\"started_at\":\"2026-11-12T20:12:44.756735+00:00\",\"text_or_structure\":0,\"unchanged\":0}"
+    }
+  ],
   "schema": 1,
-  "state": [],
+  "state": [
+    {
+      "key": "last_run",
+      "value": "{\"checked\":0,\"discovered\":0,\"discovery_ok\":false,\"errors\":[\"Discovery failed: Catalogue HTTP 403\"],\"finished_at\":\"2026-11-12T20:12:44.867207+00:00\",\"initial\":0,\"ok\":false,\"other_xml\":0,\"outstanding_errors\":0,\"pending_xml\":0,\"started\":1794514364.756735,\"started_at\":\"2026-11-12T20:12:44.756735+00:00\",\"text_or_structure\":0,\"unchanged\":0}"
+    },
+    {
+      "key": "listing_retry",
+      "value": "{\"due\":1794514964.756735,\"error\":\"Catalogue HTTP 403\",\"failures\":1}"
+    }
+  ],
   "versions": []
 }

@@ -5,15 +5,32 @@
   "hosting": "GitHub standard cloud runners + GitHub Pages",
   "hosting_note": "Scheduled collection; no permanently running Docker/API server.",
   "interval_seconds": 600,
-  "last_run": null,
+  "last_run": {
+    "checked": 0,
+    "discovered": 0,
+    "discovery_ok": false,
+    "errors": [
+      "Discovery failed: Catalogue HTTP 403"
+    ],
+    "finished_at": "2026-11-12T20:12:44.867207+00:00",
+    "initial": 0,
+    "ok": false,
+    "other_xml": 0,
+    "outstanding_errors": 0,
+    "pending_xml": 0,
+    "started": 1794514364.756735,
+    "started_at": "2026-11-12T20:12:44.756735+00:00",
+    "text_or_structure": 0,
+    "unchanged": 0
+  },
   "last_success": null,
   "listed": 0,
-  "now": "2026-11-12T20:11:00.118372+00:00",
+  "now": "2026-11-12T20:12:44.872091+00:00",
   "pending_xml": 0,
   "ready": false,
   "ready_is_at_snapshot_time": true,
   "service": "EP public pre-vote XML poller",
-  "snapshot_at": "2026-11-12T20:11:00.118372+00:00",
+  "snapshot_at": "2026-11-12T20:12:44.872108+00:00",
   "source": "https://www.europarl.europa.eu/plenary/en/votes.html?tab=order",
   "with_xml": 0
 }
