@@ -1,0 +1,19 @@
+{
+  "best_effort_schedule": true,
+  "documents": 0,
+  "errors": 0,
+  "hosting": "GitHub standard cloud runners + GitHub Pages",
+  "hosting_note": "Scheduled collection; no permanently running Docker/API server.",
+  "interval_seconds": 600,
+  "last_run": null,
+  "last_success": null,
+  "listed": 0,
+  "now": "2026-11-12T20:11:00.118372+00:00",
+  "pending_xml": 0,
+  "ready": false,
+  "ready_is_at_snapshot_time": true,
+  "service": "EP public pre-vote XML poller",
+  "snapshot_at": "2026-11-12T20:11:00.118372+00:00",
+  "source": "https://www.europarl.europa.eu/plenary/en/votes.html?tab=order",
+  "with_xml": 0
+}
