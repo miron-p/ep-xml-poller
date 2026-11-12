@@ -10,27 +10,27 @@
     "discovered": 0,
     "discovery_ok": false,
     "errors": [
-      "Discovery failed: Catalogue HTTP 403"
+      "Catalogue in retry backoff after: Catalogue HTTP 403"
     ],
-    "finished_at": "2026-11-12T20:12:44.867207+00:00",
+    "finished_at": "2026-11-12T20:14:24.472509+00:00",
     "initial": 0,
     "ok": false,
     "other_xml": 0,
     "outstanding_errors": 0,
     "pending_xml": 0,
-    "started": 1794514364.756735,
-    "started_at": "2026-11-12T20:12:44.756735+00:00",
+    "started": 1794514464.47144,
+    "started_at": "2026-11-12T20:14:24.471440+00:00",
     "text_or_structure": 0,
     "unchanged": 0
   },
   "last_success": null,
   "listed": 0,
-  "now": "2026-11-12T20:12:44.872091+00:00",
+  "now": "2026-11-12T20:14:24.476529+00:00",
   "pending_xml": 0,
   "ready": false,
   "ready_is_at_snapshot_time": true,
   "service": "EP public pre-vote XML poller",
-  "snapshot_at": "2026-11-12T20:12:44.872108+00:00",
+  "snapshot_at": "2026-11-12T20:14:24.476544+00:00",
   "source": "https://www.europarl.europa.eu/plenary/en/votes.html?tab=order",
   "with_xml": 0
 }
