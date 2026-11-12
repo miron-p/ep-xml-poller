@@ -64,6 +64,34 @@ attempts failed DNS; those were superseded by the direct network tests above.
   only. Original XML bytes are retained regardless of the comparison projection.
 - Public DNS, TLS certificate issuance and proxy connectivity, if using Caddy.
 
-No public service, scheduled automation or paid server was created. Runtime test
-databases, user documents, S&D drafts and working packages are excluded from the
-delivery ZIP. The committee HTML and its embedded library were not edited.
+The original ZIP was not deployed at creation. The later cloud deployment and
+its results are recorded below. Runtime test databases, user documents, S&D drafts
+and working packages are excluded. The committee HTML and embedded library were
+not edited.
+
+## Public cloud deployment follow-up
+
+With the user's explicit permission, the generic collector was published at
+https://github.com/miron-p/ep-xml-poller. Only generic code and public EP material
+were published. The first cloud run is
+https://github.com/miron-p/ep-xml-poller/actions/runs/43296555134.
+
+- Ubuntu 24.04 / Python 3.12: all 29 original tests passed.
+- Both actual Docker Compose configurations resolved successfully.
+- The Docker image built successfully and ran as its unprivileged user with a
+  writable data volume.
+- Independent GETs to the listing, Wolters XML, Clergeau XML and
+  Vasile-Voiculescu XML all returned HTTP 403. The Docker collection pass also
+  returned a failed discovery status, preserving that error.
+- No successful live XML download or real WordML parsing is claimed.
+
+The hosted adapter adds four persistence/publication tests: all **33 tests passed
+locally**. They cover complete snapshot restore with revision history and
+validators, exact-byte public downloads, failed-source status visibility,
+corruption rejection and empty bootstrap status. The adapter stores versioned
+public JSON/XML files instead of committing a changing binary SQLite database.
+
+The scheduled deployment uses free standard public-repository runners and a
+GitHub Pages public status/download page. Its ten-minute schedule is best-effort;
+it has no permanently running API server. Public Pages snapshots show their
+collection times and errors. Network access remains unverified on other hosts.

@@ -1,0 +1,45 @@
+name: Scheduled public EP collection
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '3,13,23,33,43,53 * * * *'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: ep-public-archive
+  cancel-in-progress: false
+
+jobs:
+  publish-check-result:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      EP_USER_AGENT: EP-VL-XML-Poller/1.0 (+https://github.com/miron-p/ep-xml-poller)
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: archive
+          path: .cloud-archive
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.12'
+      - name: Collect and export public archive
+        run: python cloud_archive.py --snapshot .cloud-archive --data-dir .cloud-runtime
+      - name: Save public documents and source status
+        working-directory: .cloud-archive
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          if ! git diff --cached --quiet; then
+            git commit -m 'Update public EP XML archive and retrieval status'
+            git push origin HEAD:archive
+          fi
+      - name: Publish the status and downloads to GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" --silent

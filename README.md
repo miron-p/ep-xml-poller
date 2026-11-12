@@ -7,17 +7,46 @@ No ELVIS, VPN, EP credentials, S&D drafts or voting indications are involved.
 
 ## Deployment status — 12 November 2026
 
-Implemented and tested locally. **Not deployed.** The live listing and Wolters XML
-both returned HTTP 403 from this laptop during today's direct Python network
-tests, including outside the sandbox. The web research tool also encountered an
-access challenge on the listing. These results do not establish whether a
-particular public server can retrieve the files. Test that server before relying
-on unattended collection; a different hosting provider is not a guaranteed fix.
+The [public hosted edition](https://miron-p.github.io/ep-xml-poller/) uses scheduled
+GitHub cloud runners and GitHub Pages, with checks requested **every 10 minutes**.
+It is a scheduled collector and static download/status service, rather than an
+always-running Docker server. Check the page's timestamp and source status.
 
-The Docker configuration is supplied but has not been built here: this laptop has
-no Docker installation. Tests ran on Windows with Python 3.10. The container uses
-Python 3.12 and the standard library only. No packages or build tools are needed
-inside the application.
+The first [cloud validation](https://github.com/miron-p/ep-xml-poller/actions/runs/43296555134)
+passed all 29 original tests on Linux/Python 3.12, resolved both Compose files,
+and built/ran the Docker image. **The EP listing and all three tested XML files
+returned HTTP 403 from that cloud runner. No live XML was retrieved.**
+The laptop's direct network tests also received 403. A different host is not a
+guaranteed fix; the publication service must accept requests from the collector.
+
+The Docker edition remains available for a server with persistent storage.
+It uses Python 3.12 and the standard library only. No application packages are
+needed. The free hosted edition preserves its state as JSON and exact XML files
+on the separate `archive` branch, restoring a temporary SQLite database for each
+run. It uses no Actions artifacts, paid runners, external databases or credentials.
+
+Standard runners in public repositories and public GitHub Pages are available
+free under the applicable limits:
+[Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions),
+[Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits).
+Scheduled runs may be delayed or skipped; GitHub can disable them after prolonged
+repository inactivity. This service is not suitable for guaranteed real-time
+notifications. Monitor repository/site size; GitHub Pages has a 1 GB site limit.
+
+The hosted JSON endpoints are `api/status.json`, `api/lists.json` and
+`api/lists/{id}/versions.json`, relative to the public page. The status is a
+snapshot, including `snapshot_at`; `ready` describes that snapshot's source
+health. Successful workflow completion means the result was saved/published,
+not that EP retrieval succeeded. Failed source checks stay explicit on the page.
+The dynamic API and comparison endpoints described below belong to the Docker
+edition. The hosted edition links to retained versions for inspection.
+
+To request a check or stop automatic checks:
+
+```sh
+gh workflow run poll.yml --repo miron-p/ep-xml-poller
+gh workflow disable poll.yml --repo miron-p/ep-xml-poller
+```
 
 ## Deploy on a server with Docker Compose
 

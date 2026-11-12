@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-11-12T20:04:21.697317+00:00",
+  "runner": "Linux",
+  "listing_ok": false,
+  "xml_ok": 0,
+  "requests": [
+    {
+      "url": "https://www.europarl.europa.eu/plenary/en/votes.html?tab=order",
+      "http_status": 403,
+      "headers": {
+        "date": "Thu, 12 Nov 2026 20:04:21 GMT",
+        "content-type": "text/html",
+        "content-length": "919"
+      }
+    },
+    {
+      "url": "https://www.europarl.europa.eu/sedcms/votingList/%28A10-0270_2026%29_Wolters.xml",
+      "valid_wordml": false,
+      "http_status": 403,
+      "headers": {
+        "date": "Thu, 12 Nov 2026 20:04:22 GMT",
+        "content-type": "text/html",
+        "content-length": "919"
+      },
+      "bytes": 0
+    },
+    {
+      "url": "https://www.europarl.europa.eu/sedcms/votingList/%28A10-0093_2026%29_Clergeau.xml",
+      "valid_wordml": false,
+      "http_status": 403,
+      "headers": {
+        "date": "Thu, 12 Nov 2026 20:04:23 GMT",
+        "content-type": "text/html",
+        "content-length": "919"
+      },
+      "bytes": 0
+    },
+    {
+      "url": "https://www.europarl.europa.eu/sedcms/votingList/A10-0261_Vasile-Voiculescu.xml",
+      "valid_wordml": false,
+      "http_status": 403,
+      "headers": {
+        "date": "Thu, 12 Nov 2026 20:04:23 GMT",
+        "content-type": "text/html",
+        "content-length": "919"
+      },
+      "bytes": 0
+    }
+  ],
+  "ok": false,
+  "cloud_run": "https://github.com/miron-p/ep-xml-poller/actions/runs/43296555134",
+  "docker_build": "passed",
+  "original_tests_passed": 29
+}
